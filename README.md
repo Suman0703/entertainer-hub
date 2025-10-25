@@ -58,25 +58,15 @@ FunShelf is a full-stack digital entertainment platform designed for book lovers
 
 #visuals
 <img width="1898" height="908" alt="Screenshot 2025-10-25 125257" src="https://github.com/user-attachments/assets/32487d3d-2dc2-4223-97f7-16ba9689fb93" />
-
 <img width="1901" height="911" alt="Screenshot 2025-10-25 125313" src="https://github.com/user-attachments/assets/c24346e1-2f50-4bf4-aa02-5e9472282be3" />
-
 <img width="1900" height="914" alt="Screenshot 2025-10-25 125326" src="https://github.com/user-attachments/assets/7aef4b26-8531-4cef-b817-71507841d920" />
-
 <img width="1899" height="910" alt="Screenshot 2025-10-25 125346" src="https://github.com/user-attachments/assets/f2ecc23e-d686-4614-aca7-b120336adc4f" />
-
 <img width="1878" height="937" alt="Screenshot 2025-10-25 125447" src="https://github.com/user-attachments/assets/afdc1115-23c0-439d-952b-1d678ab2ea96" />
-
 <img width="1897" height="917" alt="Screenshot 2025-10-25 125512" src="https://github.com/user-attachments/assets/f04676ce-7123-4c69-ae88-a2fd774ee961" />
-
 <img width="1901" height="912" alt="Screenshot 2025-10-25 125539" src="https://github.com/user-attachments/assets/f0745526-974a-4fc6-a0ca-c7e646807d69" />
-
 <img width="1906" height="911" alt="Screenshot 2025-10-25 132508" src="https://github.com/user-attachments/assets/26dc18aa-2f91-43b4-aaf8-040a3b5619f6" />
-
 <img width="1899" height="913" alt="Screenshot 2025-10-25 125611" src="https://github.com/user-attachments/assets/d1d896a7-a991-4e5a-a9b2-2bf323a95b29" />
-
 <img width="1901" height="816" alt="Screenshot 2025-10-25 125628" src="https://github.com/user-attachments/assets/e84eb52c-76e8-40aa-9943-dc816e48bc85" />
-
 <img width="1898" height="920" alt="Screenshot 2025-10-25 125648" src="https://github.com/user-attachments/assets/1efef3cd-4dd7-471a-b5d0-d6ee18505c36" />
 
 ## Project Structure 📂
