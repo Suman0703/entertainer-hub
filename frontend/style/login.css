@@ -1,0 +1,75 @@
+/* Auth Section */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(rgba(13,44,31,0.9), rgba(13,44,31,0.9)),
+              url("media/book.jpg") no-repeat center/cover;
+  padding: 20px;
+}
+
+.auth-box {
+  background: #ffffff;
+  color: #0d2c1f;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 24px;
+}
+
+.auth-box h1 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.auth-box p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.auth-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.auth-box input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.auth-box input:focus {
+  border-color: #39b67d;
+}
+
+.auth-box .btn {
+  background: #0d2c1f;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.auth-box .btn:hover {
+  background: #39b67d;
+}
+
+.auth-box .switch {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.auth-box .switch a {
+  color: #0d2c1f;
+  font-weight: bold;
+}

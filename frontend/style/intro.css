@@ -1,0 +1,127 @@
+/* --- NEW: Main Page Wrapper --- */
+.intro-page-wrapper {
+  /* Background image with overlay, like homepage */
+  background: linear-gradient(rgba(13, 44, 31, 0.8), rgba(13, 44, 31, 0.8)),
+    url("/frontend/media/genre2.jpg") no-repeat center/cover fixed;
+
+  width: 100%;
+  /* Reduced padding to bring content closer to the navbar */
+  padding: 20px 20px 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Hero Section */
+.intro-hero {
+  text-align: center;
+  padding: 30px 20px;
+  background: transparent;
+}
+
+.intro-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: #fff;
+  /* Ensure text is white */
+}
+
+.intro-hero p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+/* Options Section */
+.options-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.option-card {
+  background: #123524;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 280px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  /* Ensure text is white */
+}
+
+.option-card:hover {
+  transform: translateY(-10px);
+  box-shadow: rgba(12, 133, 78, 0.25) 0px 50px 100px -20px,
+    rgba(11, 115, 51, 0.3) 0px 30px 60px -30px,
+    rgba(10, 115, 36, 0.35) 0px -2px 6px 0px inset;
+}
+
+.option-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.option-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.option-card .btn {
+  background: #4ad991;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: #0d2c1f;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.option-card .btn:hover {
+  background: #39b67d;
+}
+
+/* Book Quotes Section */
+.book-quotes {
+  background: transparent;
+  padding: 20px 20px;
+  text-align: center;
+  font-style: italic;
+  color: #fff;
+  /* Ensure text is white */
+}
+
+.book-quotes h2 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  font-weight: 400;
+  /* Made italic text less bold */
+}
+
+/* Responsive Design FIXES */
+@media (max-width: 768px) {
+
+  /* FIX 1: Ensure main nav links are hidden (in case of override) */
+  /* Note: This should ideally be handled by common.css, but this ensures it */
+  header nav ul,
+  header .btn-login {
+    display: none !important;
+  }
+
+  /* FIX 2: Options container stacks vertically for responsiveness */
+  .options-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    /* Adjust padding for smaller screens */
+  }
+
+  .option-card {
+    width: 90%;
+    margin-bottom: 15px;
+    /* Add spacing between stacked cards */
+  }
+}

@@ -1,0 +1,112 @@
+/* Hero Section */
+.games-hero {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(rgba(13,44,31,0.8), rgba(13,44,31,0.8)),
+              url("/Frontend/media/game.jpg") no-repeat center/cover;
+}
+
+.games-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.games-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+/* Category Buttons */
+.genre-filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 30px 15px;
+}
+
+.genre-filter button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ffffff;
+  color: #0d2c1f;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.genre-filter button.active,
+.genre-filter button:hover {
+  background: #4ad991;
+  color: #0d2c1f;
+}
+
+/* Game Container */
+.games-container {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;   /* allow wrapping to next line */
+  justify-content: center;
+  gap: 20px;
+}
+
+.game-card {
+  flex: 1 1 calc(33.33% - 40px); /* 3 cards per row, minus gap */
+  max-width: 300px;
+  background: #fff;
+  color: #0d2c1f;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.game-card h2 {
+  margin-bottom: 10px;
+}
+
+button.game-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: #4ad991;
+  color: #0d2c1f;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.game-btn:hover {
+  background: #39b67d;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+  .btn-login {
+    display: none;
+  }
+}
+
+/* Responsive for tablets */
+@media (max-width: 900px) {
+  .game-card {
+    flex: 1 1 calc(50% - 40px); /* 2 per row */
+  }
+}
+
+/* Responsive for mobiles */
+@media (max-width: 600px) {
+  .game-card {
+    flex: 1 1 100%; /* 1 per row */
+  }
+}

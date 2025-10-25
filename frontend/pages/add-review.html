@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Book Review | FunShelf</title>
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/add-review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> </head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="menu-icon">&#9776;</div>
+            <div class="logo">FunShelf</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><h2>Home</h2></a></li>
+                <li><a href="games.html"><h2>Games</h2></a></li>
+                <li><a href="music.html"><h2>Music</h2></a></li>
+                <li><a href="movies.html"><h2>Movies</h2></a></li>
+                <li><a href="profile.html"><h2>My Profile</h2></a></li>
+            </ul>
+        </nav>
+        <a href="login.html" class="btn-login">Login</a>
+    </header>
+
+    <aside id="sidebar">
+        <ul>
+            <li><a href="#"><h2>Menu:</h2></a></li>
+            <li><a href="../index.html"><h3>HOME</h3></a></li>
+            <li><a href="games.html"><h3>GAMES</h3></a></li>
+            <li><a href="music.html"><h3>MUSIC</h3></a></li>
+            <li><a href="movies.html"><h3>MOVIES</h3></a></li>
+            <li><a href="intro.html"><h3>BOOKS/STORIES</h3></a></li>
+            <li><a href="login.html"><h3>LOG IN</h3></a></li>
+            <li class="close-btn"><a href="#"><h3>CLOSE MENU</h3></a></li>
+        </ul>
+    </aside>
+
+    <main class="review-page-wrapper">
+        <div class="review-form-container">
+            <div class="form-header">
+                <h2>WRITE A REVIEW</h2>
+                <p>SHARE YOUR OPINION WITH US</p>
+            </div>
+            <form id="bookReviewForm" class="review-form">
+                
+                <div class="input-row">
+                    <div class="form-group">
+                        <label for="reviewerName">Your Name<span class="required">*</span></label>
+                        <input type="text" id="reviewerName" name="reviewerName" required placeholder="Sumanmehmi@07"> 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewerEmail">Email address<span class="required">*</span></label>
+                        <input type="email" id="reviewerEmail" name="reviewerEmail" required placeholder="sumandevimehmi36@gmail.com"> 
+                    </div>
+                </div>
+
+                <!-- NEW: Book Title Field -->
+                <div class="form-group">
+                    <label for="bookTitle">Book Title<span class="required">*</span></label>
+                    <input type="text" id="bookTitle" name="bookTitle" required placeholder="The Great Gatsby">
+                </div>
+
+                <div class="form-group rating-group">
+                    <label>Book Rating<span class="required">*</span></label>
+                    <div class="stars" id="stars">
+                        <i class="far fa-star" data-value="1"></i>
+                        <i class="far fa-star" data-value="2"></i>
+                        <i class="far fa-star" data-value="3"></i>
+                        <i class="far fa-star" data-value="4"></i>
+                        <i class="far fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="bookRating" name="rating" required>
+                </div>
+
+                <div class="form-group file-upload-group">
+                    <label>Add photo (Optional)</label>
+                    <div class="file-upload-box">
+                        <input type="file" id="reviewPhoto" name="reviewPhoto" accept="image/*" style="display: none;">
+                        <p class="drag-text">Or drag your photos here to upload</p>
+                        <button type="button" class="browse-btn">BROWSE</button>
+                    </div>
+                    <div id="file-preview" class="file-preview"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewText">Write a review<span class="required">*</span></label>
+                    <textarea id="reviewText" name="reviewText" required rows="5" placeholder="Share your thoughts on the book, its plot, characters, and overall impact."></textarea> 
+                </div>
+
+                <div class="form-group captcha-group">
+                    <label for="captchaInput">17+43=?<span class="required">*</span></label>
+                    <input type="text" id="captchaInput" name="captchaInput" required placeholder="60"> 
+                </div>
+                
+                <button type="submit" class="send-btn">SEND</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 FunShelf | All Rights Reserved</p>
+    </footer>
+
+    <script src="../script/main.js"></script>
+    <script src="../script/auth.js"></script>
+    <script src="../script/add-review.js"></script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+
+.genres-page-wrapper {
+  /* Background image with overlay, like homepage */
+  background: linear-gradient(rgba(13, 44, 31, 0.7), rgba(13, 44, 31, 0.7)),
+    url("/frontend/media/gen.jpg") no-repeat center/cover fixed;
+
+  width: 100%;
+  padding: 60px 20px;
+  /* This padding now controls distance from navbar */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- 2. "All Genres" Header Bar --- */
+.genres-header-bar {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  /* White header bar */
+  padding: 25px 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  color: #0d2c1f;
+  /* Dark green theme color */
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.header-quote {
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+  /* Dark gray color */
+  margin: 0;
+  padding: 0;
+}
+
+/* --- 3. Genre Container (FLEXBOX) --- */
+.genre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Centers all boxes */
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px 0 20px 0;
+}
+
+/* --- 4. Square Genre Card with Alternating Colors --- */
+.genre-card {
+  /* This makes the card a perfect square */
+  aspect-ratio: 1 / 1;
+
+  /* Define the size of the card for responsiveness */
+  flex-basis: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Transitions for hover effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+/* Alternating colors for genre cards */
+.genre-container .genre-card:nth-child(odd) {
+  background-color: #4ad991;
+  /* Main Green for odd cards */
+  color: #ffffff;
+}
+
+.genre-container .genre-card:nth-child(even) {
+  background-color: #ffffff;
+  /* White for even cards */
+  color: #0d2c1f;
+  /* Dark text on white */
+}
+
+
+/* --- 5. Icon Styling --- */
+.genre-icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
+/* Style for icons on white cards */
+.genre-container .genre-card:nth-child(even) .genre-icon {
+  color: #4ad991;
+  /* Green icon on white cards */
+}
+
+
+/* --- 6. Text Styling (Title & Quote) --- */
+.genre-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.genre-quote {
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.3;
+  max-height: 100%;
+  opacity: 1;
+  margin: 0;
+  padding: 0 5px;
+}
+
+/* Adjust quote color for green cards (slightly lighter white) */
+.genre-container .genre-card:nth-child(odd) .genre-quote {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Adjust quote color for white cards (dark gray) */
+.genre-container .genre-card:nth-child(even) .genre-quote {
+  color: #555;
+}
+
+
+/* --- 7. Hover Effect --- */
+.genre-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* --- 8. Cleanup Old/Unused Selectors --- */
+.genres,
+.quote-feature,
+.genre-icon-bg,
+.genre-text {
+  display: contents;
+}
+
+.genre-icon-bg,
+.genre-text {
+  display: none;
+}
+
+
+/* =========================================
+  9. Responsive Design FIXES
+  ========================================= */
+@media (max-width: 992px) {
+  .genres-page-wrapper {
+    padding: 50px 15px;
+  }
+
+  .genres-header-bar {
+    padding: 20px 25px;
+    margin-bottom: 30px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .genre-container {
+    gap: 20px;
+  }
+
+  .genre-card {
+    flex-basis: 180px;
+    padding: 12px;
+  }
+
+  .genre-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .genre-title {
+    font-size: 1.1rem;
+  }
+
+  .genre-quote {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* FIX: Ensure navbar links are explicitly hidden below this threshold */
+  header nav ul,
+  header .btn-login {
+    display: none !important;
+  }
+
+  .genres-page-wrapper {
+    padding: 40px 10px;
+  }
+
+  .genres-header-bar {
+    padding: 18px 20px;
+    margin-bottom: 25px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .header-quote {
+    font-size: 0.9rem;
+  }
+
+  .genre-container {
+    gap: 15px;
+  }
+
+  .genre-card {
+    flex-basis: 160px;
+  }
+
+  .genre-icon {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .genre-title {
+    font-size: 1rem;
+  }
+
+  .genre-quote {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Mobile phones */
+  .genres-page-wrapper {
+    padding: 30px 10px;
+  }
+
+  .genres-header-bar {
+    padding: 15px 15px;
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .header-quote {
+    font-size: 0.8rem;
+  }
+
+  .genre-container {
+    gap: 10px;
+  }
+
+  .genre-card {
+    /* Two columns by setting basis to just under 50% */
+    flex-basis: calc(50% - 10px);
+    padding: 10px;
+  }
+
+  .genre-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .genre-title {
+    font-size: 0.9rem;
+  }
+
+  .genre-quote {
+    font-size: 0.7rem;
+    padding: 0 3px;
+  }
+}

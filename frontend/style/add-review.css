@@ -1,0 +1,304 @@
+/* General page wrapper for background */
+.review-page-wrapper {
+    background-color:aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top within the wrapper */
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+    padding: 20px 20px;
+    box-sizing: border-box;
+}
+
+/* --- UPDATED: Review Form Container Styling (More Rectangular) --- */
+.review-form-container {
+    background-color: #ffffff; /* White background for the form container */
+    padding: 45px 50px; /* Increased horizontal padding for wider look */
+    border-radius: 20px; /* Slightly less rounded than before, more rectangular */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Subtle shadow like the profile box */
+    width: 100%;
+    max-width: 850px; /* FURTHER INCREASED max-width for a more rectangular, spacious feel */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 35px; /* Slightly more space below header */
+}
+
+.form-header h2 {
+    font-size: 2.4rem; /* Slightly larger main heading */
+    color: #0d2c1f; /* Dark green for main heading */
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form-header p {
+    font-size: 1.1rem; /* Slightly larger paragraph */
+    color: #555;
+    margin-top: 0;
+}
+
+/* --- NEW: Wrapper for side-by-side inputs (e.g., Name and Email) --- */
+.input-row {
+    display: flex;
+    gap: 30px; /* Space between the two fields */
+    margin-bottom: 25px; 
+}
+
+/* Ensure form groups inside a row share space */
+.input-row .form-group {
+    flex: 1; /* Each takes half the available width */
+    margin-bottom: 0; /* Remove redundant bottom margin here */
+}
+
+.review-form .form-group {
+    margin-bottom: 28px; /* Default margin for single inputs (like textarea) */
+}
+
+
+.review-form label {
+    display: block;
+    font-size: 1rem; /* Slightly larger label */
+    color: #0d2c1f;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.review-form .required {
+    color: #4ad991; /* Green asterisk */
+    margin-left: 3px;
+}
+
+.review-form input[type="text"],
+.review-form input[type="email"],
+.review-form textarea,
+.review-form input[type="hidden"] {
+    width: 100%;
+    padding: 14px 18px; /* Slightly more padding for input fields */
+    border: 1px solid #e0e0e0; /* Thinner border, lighter color */
+    border-radius: 5px; /* Less rounded for rectangular feel */
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.review-form input[type="text"]:focus,
+.review-form input[type="email"]:focus,
+.review-form textarea:focus {
+    border-color: #4ad991; /* Green border on focus */
+    box-shadow: 0 0 0 2px rgba(74, 217, 145, 0.2); /* Softer shadow on focus */
+    outline: none;
+}
+
+.review-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Slightly taller default text area */
+}
+
+/* --- Star Rating --- */
+.rating-group .stars {
+    font-size: 2rem; /* Slightly larger stars */
+    color: #e0e0e0; /* Default star color (light gray) */
+    cursor: pointer;
+    display: flex;
+    gap: 8px; /* More space between stars */
+}
+
+.rating-group .stars i {
+    transition: color 0.2s ease;
+}
+
+.rating-group .stars i.fas { /* Filled star */
+    color: #f7d730; /* Gold color for selected stars */
+}
+
+/* --- File Upload --- */
+.file-upload-group {
+    margin-top: 35px; /* Slightly more top margin */
+}
+
+.file-upload-box {
+    border: 1px dashed #e0e0e0; /* Thinner dashed border */
+    border-radius: 5px; /* Less rounded */
+    padding: 35px 25px; /* Slightly more padding */
+    text-align: center;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.file-upload-box:hover {
+    border-color: #4ad991;
+    background-color: #f0fff0;
+}
+
+.file-upload-box .drag-text {
+    font-size: 1rem; /* Slightly larger text */
+    color: #777;
+    margin-bottom: 18px; /* Slightly more bottom margin */
+}
+
+.file-upload-box .browse-btn {
+    background-color: #4ad991;
+    color: #0d2c1f;
+    padding: 12px 30px; /* Larger button */
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-box .browse-btn:hover {
+    background-color: #39b67d;
+}
+
+.file-preview {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.file-preview img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* --- Captcha --- */
+.captcha-group label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+.captcha-group label input {
+    margin-left: 10px;
+    width: 90px; /* Slightly wider width for captcha input */
+    text-align: center;
+}
+
+/* --- Send Button --- */
+.send-btn {
+    width: 100%;
+    padding: 16px; /* Slightly larger button */
+    background-color: #4ad991;
+    color: #0d2c1f;
+    border: none;
+    border-radius: 8px; /* Less rounded */
+    font-size: 1.2rem; /* Larger font */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 35px; /* Slightly more top margin */
+}
+
+.send-btn:hover {
+    background-color: #39b67d;
+    box-shadow: 0 4px 10px rgba(74, 217, 145, 0.3); /* Softer shadow on hover */
+}
+
+/* =========================================
+  Responsive Design FIXES (for side-by-side)
+  ========================================= */
+
+@media (max-width: 992px) {
+    .review-form-container {
+        max-width: 750px; 
+        padding: 35px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* FIX 1: Explicitly hide horizontal navbar links */
+    header nav ul, header .btn-login {
+        display: none !important; 
+    }
+    
+    .review-page-wrapper {
+        padding: 40px 15px;
+        align-items: flex-start;
+    }
+
+    .review-form-container {
+        padding: 30px;
+        max-width: 95%; 
+    }
+    
+    /* NEW: Force horizontal fields to stack on tablets/mobile */
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 0;
+    }
+    .input-row .form-group {
+        margin-bottom: 20px; /* Reintroduce spacing between fields when stacked */
+    }
+
+
+    .form-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .form-header p {
+        font-size: 0.9rem;
+    }
+
+    .review-form input[type="text"],
+    .review-form input[type="email"],
+    .review-form textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .rating-group .stars {
+        font-size: 1.5rem;
+    }
+
+    .file-upload-box {
+        padding: 20px 15px;
+    }
+
+    .file-upload-box .browse-btn {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+
+    .send-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .captcha-group label {
+         flex-direction: column; 
+         align-items: flex-start;
+    }
+    .captcha-group label input {
+         margin-left: 0;
+         margin-top: 5px;
+         width: 100%; 
+         text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .review-form-container {
+        padding: 20px 15px;
+    }
+
+    .form-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .captcha-group label input {
+        text-align: left;
+    }
+}

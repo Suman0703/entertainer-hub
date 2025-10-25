@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | FunShelf</title>
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="menu-icon">&#9776;</div>
+            <div class="logo">FunShelf</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><h2>Home</h2></a></li>
+                <li><a href="games.html"><h2>Games</h2></a></li>
+                <li><a href="music.html"><h2>Music</h2></a></li>
+                <li><a href="movies.html"><h2>Movies</h2></a></li>
+                <li><a href="profile.html"><h2>My Profile</h2></a></li>
+            </ul>
+        </nav>
+        <a href="login.html" class="btn-login">Login</a>
+    </header>
+
+    <aside id="sidebar">
+        <ul>
+            <li><a href="#"><h2>Menu:</h2></a></li>
+            <li><a href="../index.html"><h3>HOME</h3></a></li>
+            <li><a href="games.html"><h3>GAMES</h3></a></li>
+            <li><a href="music.html"><h3>MUSIC</h3></a></li>
+            <li><a href="movies.html"><h3>MOVIES</h3></a></li>
+            <li><a href="intro.html"><h3>BOOKS/STORIES</h3></a></li>
+            <li><a href="login.html"><h3>LOG IN</h3></a></li>
+            <li class="close-btn"><a href="#"><h3>CLOSE MENU</h3></a></li>
+        </ul>
+    </aside>
+
+    <main class="profile-page-wrapper">
+        <div class="profile-container">
+
+            <div class="profile-card profile-summary-card">
+                <div class="profile-header">
+                    <img src="../media/profile-placeholder.jpg" alt="User Profile" class="profile-avatar-lg" id="summary-avatar">
+                    <div class="user-info">
+                        <h3 class="user-name" id="summary-fullname">Loading...</h3>
+                        <p class="user-email" id="summary-email">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-card profile-nav-card">
+                 <ul>
+                    <li class="nav-item active" data-target="profile-details-card">
+                        <a href="#"><i class="fas fa-user-circle"></i> My Profile</a>
+                        <i class="fas fa-chevron-right arrow-icon"></i>
+                    </li>
+                    
+                    <li class="nav-item" data-target="my-list-card">
+                        <a href="#"><i class="fas fa-video"></i> My List</a>
+                        <i class="fas fa-chevron-right arrow-icon"></i>
+                    </li>
+                    
+                    <li class="nav-item logout" id="logout-button">
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                        <i class="fas fa-chevron-right arrow-icon"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="profile-card profile-details-card main-content-card active" id="profile-details-card">
+                <div class="card-header">
+                    <div class="profile-header">
+                        <img src="../media/profile-placeholder.jpg" alt="User Profile" class="profile-avatar-sm" id="details-avatar">
+                        <div class="user-info">
+                            <h3 class="user-name" id="details-username">Loading...</h3>
+                            <p class="user-email" id="details-email-display">Loading...</p>
+                        </div>
+                    </div>
+                     <button class="btn-edit" id="edit-button"><i class="fas fa-pencil-alt"></i> Edit</button>
+                </div>
+
+                <form id="profile-form">
+                    <div class="detail-row">
+                        <label for="profile-username">Username</label>
+                        <input type="text" id="profile-username" value="Loading..." readonly required>
+                    </div>
+                    <div class="detail-row">
+                        <label for="profile-email">Email account</label>
+                        <input type="email" id="profile-email" value="Loading..." readonly required>
+                    </div>
+                    <div class="detail-row">
+                        <label for="profile-mobile">Mobile number</label>
+                        <input type="tel" id="profile-mobile" placeholder="Add number" readonly>
+                    </div>
+                     <div class="detail-row">
+                        <label for="profile-fullname-display">Full Name</label>
+                        <input type="text" id="profile-fullname-display" value="Loading..." readonly>
+                    </div>
+                     <div class="detail-row">
+                        <label for="profile-picture-url">Picture URL</label>
+                        <input type="url" id="profile-picture-url" placeholder="Enter image URL" readonly>
+                    </div>
+                    <div class="detail-row">
+                        <label for="profile-member-since">Member Since</label>
+                        <input type="text" id="profile-member-since" value="Loading..." readonly>
+                    </div>
+
+                    <div class="form-actions" style="display: none;">
+                        <button type="submit" class="btn-save-changes">Save Changes</button>
+                        <button type="button" class="btn-cancel" id="cancel-button">Cancel</button>
+                    </div>
+                </form>
+                <div id="message-area" class="message-area"></div>
+            </div>
+            
+            <div class="profile-card my-list-card main-content-card" id="my-list-card" style="display: none;">
+                <h3 style="color:#0d2c1f; margin-bottom: 15px; font-size: 1.5rem;">My Movie List</h3>
+                <div id="my-movie-list-container" class="movie-list-grid">
+                    <p style="text-align:center;">Loading your movie list...</p>
+                </div>
+                <div id="movie-list-feedback" class="message-area" style="text-align:center;"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2025 FunShelf | All Rights Reserved</p>
+    </footer>
+
+    <script src="../script/main.js"></script>
+    <script src="../script/auth.js"></script>
+    <script src="../script/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* Hero Section */
+.hero {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(rgba(13,44,31,0.9), rgba(13,44,31,0.9)),
+              url("/frontend/media/book.jpg") no-repeat center/cover;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  max-width: 600px;
+}
+
+.hero .btn {
+  background: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0d2c1f;
+  transition: background 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #39b67d;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 20px;
+}
+
+.feature-card {
+  background: #ffffff;
+  color: #0d2c1f;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: rgba(12, 133, 78, 0.25) 0px 50px 100px -20px, rgba(11, 115, 51, 0.3) 0px 30px 60px -30px, rgba(10, 115, 36, 0.35) 0px -2px 6px 0px inset;;
+}
+
+.feature-card h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+  nav ul {
+    gap: 15px;
+  }
+  .features {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide nav links & show menu icon */
+  nav ul {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+  .btn-login {
+    display: none;
+  }
+
+  /* Sidebar adjustments */
+  #sidebar {
+    width: 220px;
+  }
+
+  /* Hero text smaller */
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  /* Features become 2 columns */
+  .features {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .feature-card {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Hero text very small */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.95rem;
+  }
+  .hero .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  /* Features in single column */
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature-card {
+    width: 90%;
+  }
+}
