@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Configuration ---
+    // Configuration
     const REVIEW_API_URL = 'http://localhost:5000/api/reviews';
-    const CAPTCHA_ANSWER = 60; // 17 + 43 = 60
+    const CAPTCHA_ANSWER = 60; 
     
-    // --- DOM Elements ---
+    // DOM Elements
     const starsContainer = document.getElementById('stars');
     const bookRatingInput = document.getElementById('bookRating');
     const bookReviewForm = document.getElementById('bookReviewForm');
@@ -14,15 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const captchaInput = document.getElementById('captchaInput');
     const sendBtn = document.querySelector('.send-btn');
     
-    let currentRating = 0; // To store the selected rating
+    let currentRating = 0; 
 
-    // --- Utility Functions ---
-
+    // Utility Functions
     function highlightStars(rating) {
         Array.from(starsContainer.children).forEach(star => {
             if (parseInt(star.dataset.value) <= rating) {
-                star.classList.remove('far'); // Outline star
-                star.classList.add('fas');    // Filled star
+                star.classList.remove('far'); 
+                star.classList.add('fas');    
             } else {
                 star.classList.remove('fas');
                 star.classList.add('far');
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function showFormMessage(message, type = 'error') {
-        // Create a simple temporary message element below the send button
         let msgEl = document.querySelector('.form-message');
         if (!msgEl) {
              msgEl = document.createElement('p');
@@ -64,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
     
-    // --- Star Rating Functionality ---
+    // Star Rating Functionality
     if (starsContainer) {
         starsContainer.addEventListener('mouseover', (event) => {
             if (event.target.classList.contains('fa-star')) {
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- File Upload Functionality ---
+    // File Upload Functionality
     if (browseBtn) {
         browseBtn.addEventListener('click', () => {
             reviewPhotoInput.click();
@@ -128,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- Form Submission (API Integration) ---
+    // Form Submission (API Integration)
     if (bookReviewForm) {
         bookReviewForm.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -137,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const captchaAnswer = parseInt(captchaInput.value);
             if (captchaAnswer !== CAPTCHA_ANSWER) {
                 showFormMessage('Incorrect CAPTCHA. Please try again.');
-                captchaInput.value = ''; // Clear input
+                captchaInput.value = ''; 
                 return;
             }
             
@@ -148,13 +146,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            // 3. Prepare FormData (CRITICAL: Multer expects this)
+            // 3. Prepare FormData
             const formData = new FormData(bookReviewForm);
             
-            // Re-add hidden fields that might be lost or modified
             formData.set('rating', currentRating); 
-            // The file input uses the name="reviewPhoto" attribute, which Multer uses
-            // The other text fields are automatically included by new FormData(form)
 
             sendBtn.disabled = true;
             sendBtn.textContent = 'SENDING...';
@@ -163,15 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const response = await fetch(REVIEW_API_URL, {
                     method: 'POST',
-                    // IMPORTANT: Do NOT set Content-Type header when sending FormData with a file. 
-                    // The browser sets it automatically with the correct boundary.
                     body: formData 
                 });
 
                 const data = await response.json();
 
                 if (!response.ok) {
-                    // Display error message from backend (e.g., validation errors)
                     throw new Error(data.msg || 'Review submission failed due to a server error.');
                 }
                 

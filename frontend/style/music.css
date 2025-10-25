@@ -1,69 +1,294 @@
-/* Import everything from movies.css */
-@import url("/Frontend/style/movies.css");
-
-.music-hero {
-  height: 45vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  background: linear-gradient(rgba(13,44,31,0.8), rgba(13,44,31,0.8)),
-              url("/Frontend/media/music.jpg") no-repeat center/cover;
+/* Main content wrapper */
+.music-main-content {
+    background-color: #f8f9fa; /* Light background for the main content area */
 }
 
-.music-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: #fff;
+/* Hero Section */
+.music-hero-section {
+    background: linear-gradient(rgba(13, 44, 31, 0.8), rgba(13, 44, 31, 0.8)), 
+                url('../media/music.jpg') no-repeat center center/cover; /* Add a suitable background image */
+    color: #ffffff;
+    padding: 80px 20px 50px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* For pseudo-elements if needed */
 }
 
-.music-hero p {
-  font-size: 1.2rem;
-  color: #ddd;
-  max-width: 600px;
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Track Cards */
-.tracks-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 20px;
+.hero-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a7d7c5; /* Light green accent */
+    margin-bottom: 5px;
 }
 
+.music-hero-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: #e0f2f1; /* Lighter white */
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.hero-play-button {
+    background-color: #4ad991; /* Theme green */
+    color: #0d2c1f; /* Dark text */
+    padding: 12px 35px;
+    border: none;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.hero-play-button i {
+    margin-right: 8px;
+}
+
+.hero-play-button:hover {
+    background-color: #39b67d; /* Darker green */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+
+/* Genre Grid Section */
+.music-library-grid {
+    display: grid;
+    /* Responsive grid, 3-5 columns depending on screen size */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 25px;
+    padding: 40px 50px;
+    max-width: 1300px;
+    margin: 0 auto; /* Center the grid */
+    background-color: #f8f9fa; /* Consistent light background */
+}
+
+/* Individual Genre Card */
+.genre-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative; /* For overlay effects if needed */
+}
+
+.genre-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(74, 217, 145, 0.2); /* Green shadow on hover */
+}
+
+.genre-image {
+    width: 100%;
+    height: 150px; /* Fixed height for image */
+    object-fit: cover; /* Crop image to fit */
+    display: block;
+}
+
+.genre-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.genre-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #123524; /* Dark green text */
+}
+
+/* Active State for Genre Card (Optional) */
+.genre-card.active {
+    outline: 3px solid #4ad991; /* Highlight selected genre */
+    box-shadow: 0 8px 25px rgba(74, 217, 145, 0.3);
+}
+
+/* Selected Tracks Section */
+.selected-tracks-section {
+    padding: 40px 50px;
+    background-color: #f8f9fa; /* Light background */
+}
+
+.selected-tracks-section h2 {
+    font-size: 2rem;
+    color: #0d2c1f;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #e0f2f1; /* Light green separator */
+    padding-bottom: 10px;
+}
+
+/* Grid for displaying video embeds */
+.tracks-grid {
+    display: grid;
+    /* Responsive grid for tracks */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 25px;
+    max-width: 1300px;
+    margin: 0 auto; /* Center the grid */
+}
+
+/* Style for individual track card (holding the iframe) */
 .track-card {
-  background: #ffffff;
-  color: #0d2c1f;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  width: 280px;
-  transition: transform 0.3s ease, opacity 0.6s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  box-shadow: rgba(12, 133, 78, 0.25) 0px 20px 50px -10px;
-}
-
-.track-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    color: #333;
 }
 
 .track-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: #123524;
 }
 
 .track-card p {
-  font-size: 1rem;
-  margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0 0 10px 0;
 }
 
-.track-card audio {
-  width: 100%;
-  outline: none;
-  border-radius: 8px;
+.video-embed-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 6px; /* Rounded corners for video */
+}
+
+.video-embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Loading/Error Messages */
+.loading-message,
+.error-message {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.loading-message { color: #4ad991; }
+.error-message { color: #e74c3c; }
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .music-hero-section h1 {
+        font-size: 3rem;
+    }
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    .music-library-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+        padding: 30px 40px;
+    }
+    .selected-tracks-section {
+        padding: 30px 40px;
+    }
+    .tracks-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hide nav */
+    header nav ul, header .btn-login {
+        display: none !important;
+    }
+
+    .music-hero-section {
+        padding: 60px 15px 40px 15px;
+    }
+    .music-hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .hero-description {
+        font-size: 1rem;
+    }
+    .music-library-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 25px 20px;
+    }
+    .genre-image {
+        height: 120px;
+    }
+    .genre-info h3 {
+        font-size: 1rem;
+    }
+    .selected-tracks-section {
+        padding: 25px 20px;
+    }
+    .selected-tracks-section h2 {
+        font-size: 1.6rem;
+    }
+    .tracks-grid {
+        grid-template-columns: 1fr; /* Single column for tracks */
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .music-hero-section h1 {
+        font-size: 2rem;
+    }
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    .hero-play-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+    .music-library-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small phones */
+        gap: 10px;
+        padding: 20px 15px;
+    }
+    .genre-image {
+        height: 100px;
+    }
+    .genre-info h3 {
+        font-size: 0.9rem;
+    }
+    .selected-tracks-section {
+        padding: 20px 15px;
+    }
+    .selected-tracks-section h2 {
+        font-size: 1.4rem;
+    }
+    .track-card {
+        padding: 10px;
+    }
+    .track-card h2 {
+        font-size: 1rem;
+    }
 }

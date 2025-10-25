@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken'); // CRITICAL: Ensure jwt is imported
+const jwt = require('jsonwebtoken'); 
 
 const UserSchema = new mongoose.Schema({
-    // ... (existing fields) ...
     password: {
         type: String,
         required: [true, 'Please add a password'],
         minlength: 6,
         select: false,
     },
-    // ... (other fields like age, mobileNumber, profilePictureUrl) ...
-    movieList: [ // <-- CRITICAL: This array must exist!
+   
+    movieList: [ 
         {
             movieId: {
                 type: String, 
@@ -37,6 +36,5 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-// ... (methods like UserSchema.pre('save'), getSignedJwtToken, matchPassword) ...
 
 module.exports = mongoose.model('User', UserSchema);

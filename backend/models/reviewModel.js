@@ -3,10 +3,9 @@ const mongoose = require('mongoose');
 const ReviewSchema = new mongoose.Schema({
     bookId: {
         type: mongoose.Schema.Types.ObjectId,
-        // Assuming you might link this to a specific Book document later
         required: false, 
     },
-    bookTitle: { // <-- New required field
+    bookTitle: { 
         type: String,
         required: [true, 'The book title is required'],
         trim: true,
@@ -36,7 +35,7 @@ const ReviewSchema = new mongoose.Schema({
     },
     photoUrl: {
         type: String,
-        required: false, // Optional
+        required: false, 
     },
     submittedAt: {
         type: Date,
@@ -44,5 +43,4 @@ const ReviewSchema = new mongoose.Schema({
     },
 });
 
-// CRITICAL: Mongoose.model compiles the schema into a reusable model constructor.
 module.exports = mongoose.model('Review', ReviewSchema);

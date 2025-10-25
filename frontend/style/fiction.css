@@ -1,21 +1,16 @@
-/* --- NEW: Full Background Applied to Body --- */
 body {
-    /* Use the same dark green base as before */
     background: #0d2c1f;
     color: #fff;
     line-height: 1.6;
-    /* Apply a non-fixed background image that covers the entire page */
     background: linear-gradient(rgba(13,44,31,0.5), rgba(13,44,31,0.5)),
                 url("../media/hero.jpg") no-repeat center/cover;
-    background-attachment: fixed; /* Keep background static for scrolling effect */
+    background-attachment: fixed; 
 }
 
 /* Hero Section */
 .fiction-hero {
     text-align: center;
     padding: 10px 20px;
-    /* CRITICAL: Use a matching dark color with slight opacity 
-       to allow the body background image to show through */
     background: rgba(18, 53, 36, 0.7); 
 }
 
@@ -36,13 +31,11 @@ body {
     justify-content: center;
     gap: 30px;
     padding: 10px 20px;
-    /* CRITICAL: Use transparent/matching background so the body background image shows */
     background: rgba(18, 53, 36, 0.7);
     color: #ffffff;
 }
 
 .book-card {
-    /* Keep book card slightly transparent/darker so they pop against the background */
     background: #123524;
     width: 280px;
     border-radius: 15px;

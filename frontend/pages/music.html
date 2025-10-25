@@ -1,66 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Music for Reading | FunShelf</title>
-  <link rel="stylesheet" href="../style/common.css" />
-  <link rel="stylesheet" href="../style/music.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Library | FunShelf</title>
+    <link rel="stylesheet" href="../style/common.css">
+    <link rel="stylesheet" href="../style/music.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-      <div class="menu-icon">&#9776;</div>
-      <div class="logo">FunShelf</div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="../index.html"><h2>Home</h2></a></li>
-        <li><a href="games.html"><h2>Games</h2></a></li>
-        <li><a href="music.html"><h2>Music</h2></a></li>
-        <li><a href="movies.html"><h2>Movies</h2></a></li>
-        <li><a href="login.html"><h2>My Profile</h2></a></li>
-      </ul>
-    </nav>
-    <a href="login.html" class="btn-login">Login</a>
-  </header>
+    <header>
+        <div class="logo-container">
+            <div class="menu-icon">&#9776;</div>
+            <div class="logo">FunShelf</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><h2>Home</h2></a></li>
+                <li><a href="games.html"><h2>Games</h2></a></li>
+                <li><a href="music.html"><h2>Music</h2></a></li>
+                <li><a href="movies.html"><h2>Movies</h2></a></li>
+                <li><a href="profile.html"><h2>My Profile</h2></a></li>
+            </ul>
+        </nav>
+        <a href="login.html" class="btn-login">Login</a>
+    </header>
 
-  <aside id="sidebar">
-    <ul>
-      <li><a href="#"><h2>Menu:</h2></a></li>
-      <li><a href="../index.html"><h3>HOME</h3></a></li>
-      <li><a href="games.html"><h3>GAMES</h3></a></li>
-      <li><a href="music.html"><h3>MUSIC</h3></a></li>
-      <li><a href="movies.html"><h3>MOVIES</h3></a></li>
-      <li><a href="intro.html"><h3>BOOKS/STORIES</h3></a></li>
-      <li><a href="login.html"><h3>LOG IN</h3></a></li>
-      <li class="close-btn"><a href="#"><h3>CLOSE MENU</h3></a></li>
-    </ul>
-  </aside>
+    <aside id="sidebar">
+        <ul>
+            <li><a href="#"><h2>Menu:</h2></a></li>
+            <li><a href="../index.html"><h3>HOME</h3></a></li>
+            <li><a href="games.html"><h3>GAMES</h3></a></li>
+            <li><a href="music.html"><h3>MUSIC</h3></a></li>
+            <li><a href="movies.html"><h3>MOVIES</h3></a></li>
+            <li><a href="intro.html"><h3>BOOKS/STORIES</h3></a></li>
+            <li><a href="login.html"><h3>LOG IN</h3></a></li>
+            <li class="close-btn"><a href="#"><h3>CLOSE MENU</h3></a></li>
+        </ul>
+    </aside>
 
-  <section class="music-hero">
-    <h1>Calm Music for Reading</h1>
-    <p>Lo-fi beats, piano, rain, and ambient sounds to keep you focused.</p>
-  </section>
+    <main class="music-main-content">
+        <div class="music-hero-section">
+            <div class="hero-content">
+                <p class="hero-label">Your Music</p>
+                <h1>On Repeat</h1>
+                <p class="hero-description">Discover curated playlists for every mood and moment.</p>
+                <button class="hero-play-button"><i class="fas fa-play"></i> Play All</button>
+            </div>
+        </div>
 
-  <section class="genre-filter">
-    <button data-genre="lofi" class="active">Lo-Fi</button>
-    <button data-genre="piano">Piano</button>
-    <button data-genre="ambient">Ambient</button>
-    <button data-genre="nature">Nature</button>
-    <button data-genre="rain">Rain</button>
-    <button data-genre="focus">Focus</button>
-  </section>
+        <div class="music-library-grid">
+            
+            <div class="genre-card" data-genre="lofi">
+                <img src="../media/lofi.jpg" alt="Lo-Fi Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Lo-fi Beats</h3>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="focus">
+                <img src="../media/focus.jpg" alt="Deep Focus Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Deep Focus</h3>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="piano">
+                <img src="../media/piano.jpg" alt="Piano Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Piano Melodies</h3>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="ambient">
+                <img src="../media/ambient.jpg" alt="Ambient Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Ambient Vibes</h3>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="nature">
+                <img src="../media/nature.jpg" alt="Nature Sounds" class="genre-image">
+                <div class="genre-info">
+                    <h3>Nature Sounds</h3>
+                </div>
+            </div>
+             <div class="genre-card" data-genre="rain">
+                <img src="../media/rain.jpg" alt="Rain Sounds" class="genre-image">
+                <div class="genre-info">
+                    <h3>Rain Sounds</h3>
+                </div>
+            </div>
+            <div class="genre-card" data-genre="classical">
+                <img src="../media/classical.jpg" alt="Classical Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Classical Focus</h3>
+                </div>
+            </div>
+             <div class="genre-card" data-genre="jazz">
+                <img src="../media/jazz.jpg" alt="Jazz Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Smooth Jazz</h3>
+                </div>
+            </div>
+             <div class="genre-card" data-genre="electronic">
+                <img src="../media/electronic.jpg" alt="Electronic Music" class="genre-image">
+                <div class="genre-info">
+                    <h3>Chill Electronic</h3>
+                </div>
+            </div>
+            
+        </div>
 
-  <section class="tracks-container" id="tracks-container">
-    </section>
+        <section class="selected-tracks-section">
+            <h2 id="selected-genre-title">Selected Genre: Lo-fi Beats</h2>
+            <div id="tracks-container" class="tracks-grid">
+                
+                <p class="loading-message">Select a genre to load tracks...</p>
+            </div>
+        </section>
 
-  <footer>
-    <p>© 2025 FunShelf | All Rights Reserved</p>
-  </footer>
+    </main>
 
-  <script src="../script/main.js"></script>
-  <script src="../script/music.js"></script>
-  <script src="../script/auth.js"></script>
+    <footer>
+        <p>© 2025 FunShelf | All Rights Reserved</p>
+    </footer>
+
+    <script src="../script/main.js"></script>
+    <script src="../script/music.js"></script>
 </body>
 </html>

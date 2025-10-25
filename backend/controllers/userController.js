@@ -1,19 +1,13 @@
-const User = require('../models/userModel'); // Assuming your user model is here
-const jwt = require('jsonwebtoken'); // To decode user from token
+const User = require('../models/userModel'); 
+const jwt = require('jsonwebtoken'); 
 
-// --- IMPORTANT: Placeholder for Authentication ---
-// NOTE: This is a duplicate of the protect logic you have in authMiddleware.js. 
-// We are including it here temporarily to make the controller runnable. 
-// In a clean project, this function should be imported from authMiddleware.js.
 const protect = (req, res, next) => {
     let token;
-    // Check if token exists in header and starts with 'Bearer'
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
     }
 
     if (!token) {
-        // Find the user model to find by ID
         return res.status(401).json({ msg: 'Not authorized, no token' });
     }
 
@@ -21,7 +15,7 @@ const protect = (req, res, next) => {
         // Verify the token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         // Find the user by ID and attach it to the request object
-        req.user = decoded.user.id; // Assuming JWT payload stores { user: { id: userId } }
+        req.user = decoded.user.id;
         next();
     } catch (err) {
         console.error('Token verification error:', err.message);
@@ -30,9 +24,6 @@ const protect = (req, res, next) => {
 };
 
 
-// @desc    Add a movie to user's list
-// @route   POST /api/users/movie-list
-// @access  Private (requires authentication)
 exports.addMovieToList = [protect, async (req, res) => {
     const { movieId, title, genre } = req.body; // Expect these from frontend
     const userId = req.user; // User ID comes from the protect middleware
@@ -61,9 +52,6 @@ exports.addMovieToList = [protect, async (req, res) => {
     }
 }];
 
-// @desc    Get user's movie list
-// @route   GET /api/users/movie-list
-// @access  Private (requires authentication)
 exports.getMovieList = [protect, async (req, res) => {
     const userId = req.user;
 
@@ -82,9 +70,7 @@ exports.getMovieList = [protect, async (req, res) => {
     }
 }];
 
-// @desc    Remove a movie from user's list
-// @route   DELETE /api/users/movie-list/:movieId
-// @access  Private (requires authentication)
+
 exports.removeMovieFromList = [protect, async (req, res) => {
     const { movieId } = req.params; // MovieId to remove from list
     const userId = req.user;

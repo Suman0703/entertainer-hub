@@ -1,23 +1,15 @@
 const Book = require('../models/bookModel');
 
-// @desc    Add a new book
-// @route   POST /api/books
-// @access  Private 
 exports.addBook = async (req, res) => {
-    // File details are now in req.file, other fields are in req.body
     const { title, genre, description, coverImageUrl } = req.body;
     
-    // Check if the file upload was successful
     if (!req.file) {
         return res.status(400).json({ msg: 'No PDF file uploaded or file type is incorrect (only PDF allowed).' });
     }
     
-    // Construct the public URL path for the PDF
-    // We configured the server to use '/pdfs' for the public_pdfs directory
     const publicPdfPath = `/pdfs/${req.file.filename}`;
 
     try {
-        // Simple validation
         if (!title || !genre) {
             return res.status(400).json({ msg: 'Please provide title and genre' });
         }
@@ -27,7 +19,7 @@ exports.addBook = async (req, res) => {
             genre,
             description,
             coverImageUrl,
-            pdfUrl: `http://localhost:5000${publicPdfPath}`, // <-- UPDATED: Store the full public URL
+            pdfUrl: `http://localhost:5000${publicPdfPath}`, 
         });
 
         const book = await newBook.save();
@@ -35,7 +27,6 @@ exports.addBook = async (req, res) => {
 
     } catch (err) {
         console.error('Add Book Error:', err.message);
-        // Handle validation errors (e.g., invalid genre)
         if (err.name === 'ValidationError') {
              return res.status(400).json({ msg: err.message });
         }
@@ -43,19 +34,14 @@ exports.addBook = async (req, res) => {
     }
 };
 
-// @desc    Get books, optionally filtered by genre
-// @route   GET /api/books
-// @route   GET /api/books?genre=Fiction
-// @access  Public
 exports.getBooks = async (req, res) => {
     try {
         const query = {};
         if (req.query.genre) {
-            // Case-insensitive genre search
             query.genre = new RegExp(`^${req.query.genre}$`, 'i');
         }
 
-        const books = await Book.find(query).sort({ addedAt: -1 }); // Sort by newest first
+        const books = await Book.find(query).sort({ addedAt: -1 }); 
 
         res.status(200).json(books);
 
@@ -65,9 +51,6 @@ exports.getBooks = async (req, res) => {
     }
 };
 
-// @desc    Get a single book by ID (optional, useful for detail pages)
-// @route   GET /api/books/:id
-// @access  Public
 exports.getBookById = async (req, res) => {
     try {
         const book = await Book.findById(req.params.id);

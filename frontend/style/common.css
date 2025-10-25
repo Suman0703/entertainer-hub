@@ -8,10 +8,8 @@
 
 body {
   background: #0d2c1f;
-  /* Dark green */
   color: #fff;
   line-height: 1.6;
-  /* NO padding-left added */
 }
 
 a {
@@ -19,7 +17,7 @@ a {
   color: inherit;
 }
 
-/* Header & Navbar - UNCHANGED */
+/* Header & Navbar */
 header {
   background: #123524;
   padding: 15px 40px;
@@ -47,13 +45,11 @@ header {
   font-size: 1.8rem;
   cursor: pointer;
   display: block;
-  /* Always visible */
 }
 
 nav ul,
 .btn-login {
   display: none;
-  /* Hidden by default, shown by media query */
 }
 
 nav ul {
@@ -85,46 +81,32 @@ nav ul li a:hover h2 {
   background: #39b67d;
 }
 
-
-/* =========================================
-  SIDEBAR STYLING UPDATE (More Attractive)
-  ========================================= */
+/* Sidebar */
 #sidebar {
   position: fixed;
   top: 0;
   left: -260px;
-  /* Initially hidden - UNCHANGED */
   width: 250px;
-  /* UNCHANGED */
   height: 100%;
-  /* UPDATED: Subtle gradient background */
   background: linear-gradient(180deg, #1a4a34 0%, #123524 100%);
   padding: 25px 0 15px 0;
-  /* Changed padding */
   transition: left 0.3s ease;
-  /* UNCHANGED */
   z-index: 200;
   border-right: none;
-  /* Removed border */
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.35);
-  /* Enhanced shadow */
   display: flex;
   flex-direction: column;
 }
 
 #sidebar.active {
   left: 0;
-  /* UNCHANGED */
 }
 
 #sidebar ul {
   list-style: none;
   flex-grow: 1;
-  /* Allow list to fill space */
   overflow-y: auto;
-  /* Add scroll if needed */
   padding: 0;
-  /* Remove horizontal padding from ul */
 }
 
 /* Style for Menu Items (li a) */
@@ -132,106 +114,75 @@ nav ul li a:hover h2 {
   display: flex;
   align-items: center;
   padding: 12px 25px;
-  /* Adjust padding */
   color: #e0f2f1;
-  /* Lighter text color */
   transition: background 0.2s ease, color 0.2s ease, border-left 0.2s ease, padding-left 0.2s ease;
   border-bottom: none;
-  /* Remove default border */
   border-radius: 0;
-  /* Remove border-radius from link itself */
   margin-bottom: 2px;
-  /* Smaller space between items */
   border-left: 4px solid transparent;
-  /* Add transparent left border for hover effect */
 }
 
 /* Style for Menu Item Text (h3 inside a) */
 #sidebar ul li a h3 {
   font-weight: 400;
-  /* Regular weight */
   margin: 0;
   font-size: 1.05rem;
-  /* Slightly adjusted size */
 }
 
 /* Hover effect for Menu Items */
 #sidebar ul li a:hover {
   background: rgba(74, 217, 145, 0.1);
-  /* Subtle green background */
   color: #ffffff;
-  /* Brighter white text on hover */
   border-left: 4px solid #4ad991;
-  /* Highlight with green left border */
   padding-left: 21px;
-  /* Keep text aligned when border appears */
 }
 
 /* Remove hover effect from the title "Menu:" if it's the first item */
 #sidebar ul li:first-child a:hover {
   background: none;
   color: #ffffff;
-  /* Keep original color */
   border-left: 4px solid transparent;
-  /* No border on title hover */
   padding-left: 25px;
-  /* Reset padding */
   cursor: default;
 }
 
 /* Style for the "Menu:" title */
 #sidebar ul li:first-child a h2 {
   font-size: 1.2rem;
-  /* Make title slightly larger */
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 15px;
-  /* More space below title */
   padding-left: 25px;
-  /* Align with other items */
 }
 
 /* Ensure title doesn't get hover background */
 #sidebar ul li:first-child a {
   margin-bottom: 10px;
-  /* Space after title */
   border-left: none;
-  /* No border for title */
   padding: 0;
-  /* Reset padding for title link */
 }
-
 
 /* Close Button Styling */
 #sidebar ul li.close-btn {
   margin-top: auto;
-  /* Push close button towards the bottom */
   padding: 15px 0;
-  /* Add padding around close button */
 }
 
 #sidebar ul li.close-btn a {
   color: #ff9a9a;
-  /* Lighter red color */
   justify-content: center;
-  /* Center the close text */
   border-left: 4px solid transparent;
-  /* Match structure */
   border-radius: 0;
 }
 
 #sidebar ul li.close-btn a:hover {
   background: rgba(255, 107, 107, 0.15);
-  /* Subtle red background */
   color: #ffcccc;
-  /* Lighter red text on hover */
   border-left: 4px solid #ff6b6b;
-  /* Red border */
   padding-left: 21px;
 }
 
-
-/* Footer - UNCHANGED */
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -240,8 +191,7 @@ footer {
   font-size: 0.9rem;
 }
 
-
-/* Responsive Design for Common Elements - UNCHANGED */
+/* Responsive Design */
 @media (min-width: 769px) {
   nav ul {
     display: flex;
@@ -250,9 +200,6 @@ footer {
   .btn-login {
     display: inline-block;
   }
-
-  /* .menu-icon { display: none; } */
-  /* Keep icon if always needed */
 }
 
 @media (max-width: 768px) {
