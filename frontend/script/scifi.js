@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         bookListContainer.innerHTML = '<p style="text-align:center; color: #aaa; padding: 50px;">Loading books...</p>';
 
         try {
-            // Construct API URL: /api/books?genre=Sci-Fi
             const url = `${API_BASE_URL}?genre=${GENRE_NAME}`;
 
             const response = await fetch(url);

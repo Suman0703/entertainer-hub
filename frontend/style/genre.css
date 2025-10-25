@@ -1,24 +1,20 @@
-
+/* General page wrapper for background */
 .genres-page-wrapper {
-  /* Background image with overlay, like homepage */
   background: linear-gradient(rgba(13, 44, 31, 0.7), rgba(13, 44, 31, 0.7)),
     url("/frontend/media/gen.jpg") no-repeat center/cover fixed;
-
   width: 100%;
   padding: 60px 20px;
-  /* This padding now controls distance from navbar */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* --- 2. "All Genres" Header Bar --- */
+/* "All Genres" Header Bar */
 .genres-header-bar {
   width: 100%;
   max-width: 1200px;
   background-color: #ffffff;
-  /* White header bar */
   padding: 25px 30px;
   border-radius: 12px;
   margin-bottom: 40px;
@@ -29,7 +25,6 @@
 .page-title {
   font-size: 2.2rem;
   color: #0d2c1f;
-  /* Dark green theme color */
   margin: 0 0 8px 0;
   font-weight: 700;
 }
@@ -38,33 +33,27 @@
   font-size: 1rem;
   font-style: italic;
   color: #555;
-  /* Dark gray color */
   margin: 0;
   padding: 0;
 }
 
-/* --- 3. Genre Container (FLEXBOX) --- */
+/* Genre Container */
 .genre-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* Centers all boxes */
   gap: 25px;
   width: 100%;
   max-width: 1200px;
   padding: 30px 0 20px 0;
 }
 
-/* --- 4. Square Genre Card with Alternating Colors --- */
+/* Genre Card */
 .genre-card {
-  /* This makes the card a perfect square */
   aspect-ratio: 1 / 1;
-
-  /* Define the size of the card for responsiveness */
   flex-basis: 200px;
   flex-grow: 0;
   flex-shrink: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,43 +62,33 @@
   padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  /* Transitions for hover effect */
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   text-decoration: none;
   overflow: hidden;
 }
 
-/* Alternating colors for genre cards */
 .genre-container .genre-card:nth-child(odd) {
   background-color: #4ad991;
-  /* Main Green for odd cards */
   color: #ffffff;
 }
 
 .genre-container .genre-card:nth-child(even) {
   background-color: #ffffff;
-  /* White for even cards */
   color: #0d2c1f;
-  /* Dark text on white */
 }
 
-
-/* --- 5. Icon Styling --- */
+/* Icon Styling */
 .genre-icon {
   font-size: 3rem;
   line-height: 1;
   margin-bottom: 15px;
 }
 
-/* Style for icons on white cards */
 .genre-container .genre-card:nth-child(even) .genre-icon {
   color: #4ad991;
-  /* Green icon on white cards */
 }
 
-
-/* --- 6. Text Styling (Title & Quote) --- */
+/* Text Styling (Title & Quote) */
 .genre-title {
   font-size: 1.25rem;
   font-weight: 600;
@@ -126,25 +105,21 @@
   padding: 0 5px;
 }
 
-/* Adjust quote color for green cards (slightly lighter white) */
 .genre-container .genre-card:nth-child(odd) .genre-quote {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Adjust quote color for white cards (dark gray) */
 .genre-container .genre-card:nth-child(even) .genre-quote {
   color: #555;
 }
 
-
-/* --- 7. Hover Effect --- */
+/* Hover Effect */
 .genre-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
-
-/* --- 8. Cleanup Old/Unused Selectors --- */
+/* Cleanup Old/Unused Selectors */
 .genres,
 .quote-feature,
 .genre-icon-bg,
@@ -157,10 +132,7 @@
   display: none;
 }
 
-
-/* =========================================
-  9. Responsive Design FIXES
-  ========================================= */
+/* Responsive Design */
 @media (max-width: 992px) {
   .genres-page-wrapper {
     padding: 50px 15px;
@@ -200,7 +172,6 @@
 
 @media (max-width: 768px) {
 
-  /* FIX: Ensure navbar links are explicitly hidden below this threshold */
   header nav ul,
   header .btn-login {
     display: none !important;
@@ -246,8 +217,6 @@
 }
 
 @media (max-width: 480px) {
-
-  /* Mobile phones */
   .genres-page-wrapper {
     padding: 30px 10px;
   }
@@ -270,7 +239,6 @@
   }
 
   .genre-card {
-    /* Two columns by setting basis to just under 50% */
     flex-basis: calc(50% - 10px);
     padding: 10px;
   }

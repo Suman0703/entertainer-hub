@@ -1,38 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- Configuration ---
+    // Configuration
     const API_MUSIC_URL = 'http://localhost:5000/api/music';
     const tracksContainer = document.getElementById("tracks-container");
     const genreCards = document.querySelectorAll(".music-library-grid .genre-card");
     const selectedGenreTitle = document.getElementById("selected-genre-title");
-    const playAllButton = document.querySelector(".hero-play-button"); // <-- Get the button
+    const playAllButton = document.querySelector(".hero-play-button");
 
-    // --- Error Check ---
+    // Error Check
     if (!tracksContainer || !selectedGenreTitle) {
         console.error("CRITICAL ERROR: Essential elements ('tracks-container' or 'selected-genre-title') not found!");
         return;
     }
-    // ... (rest of the error checks) ...
+    if (genreCards.length === 0) {
+        console.warn("Warning: No elements with class '.genre-card' found inside '.music-library-grid'.");
+    }
 
-    // --- Initial State ---
+    // Initial State
     let currentGenre = genreCards.length > 0 ? genreCards[0].dataset.genre : 'lofi';
     let currentGenreName = genreCards.length > 0 ? genreCards[0].querySelector('.genre-info h3')?.textContent || 'Default Genre' : 'Lo-fi Beats';
-    let currentTracks = []; // <-- Store the currently displayed tracks
+    let currentTracks = [];
 
-    // --- Dynamic Track Rendering ---
+    // Dynamic Track Rendering
     function renderTracks(genreName, tracks) {
         selectedGenreTitle.textContent = `Selected Genre: ${genreName}`;
-        tracksContainer.innerHTML = ""; // Clear previous
-        currentTracks = tracks; // <-- Store tracks for Play All
+        tracksContainer.innerHTML = "";
+        currentTracks = tracks;
 
         if (!tracks || tracks.length === 0) {
             tracksContainer.innerHTML = `<p class="error-message" style="text-align:center;">No tracks found for ${genreName}.</p>`;
             return;
         }
 
-        tracks.forEach((track, index) => { // <-- Added index
+        tracks.forEach((track, index) => {
             const card = document.createElement("div");
             card.className = "track-card";
-            // Add an ID to the iframe to target it
             const iframeId = `Youtubeer-${index}`;
             card.innerHTML = `
                 <h2>${track.title || 'Untitled Track'}</h2>
@@ -42,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         id="${iframeId}"
                         width="100%"
                         height="auto"
-                        src="${track.embedUrl}&enablejsapi=1" 
+                        src="${track.embedUrl}&enablejsapi=1"
                         title="YouTube video player for ${track.title || 'Untitled Track'}"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -54,11 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Main Fetch Function ---
+    // Main Fetch Function
     async function fetchTracks(genre, genreName) {
         selectedGenreTitle.textContent = `Loading: ${genreName}...`;
         tracksContainer.innerHTML = '<p class="loading-message" style="text-align:center;">Loading tracks...</p>';
-        currentTracks = []; // Clear tracks while loading
+        currentTracks = [];
 
         try {
             const url = `${API_MUSIC_URL}?genre=${encodeURIComponent(genre)}`;
@@ -78,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // --- Genre Card Click Handler ---
+    // Genre Card Click Handler
     if (genreCards.length > 0) {
         genreCards.forEach(card => {
             card.addEventListener("click", () => {
@@ -100,21 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Play All Button Functionality ---
+    // Play All Button Functionality
     if (playAllButton) {
         playAllButton.addEventListener('click', () => {
-            // Find the first iframe in the container
             const firstIframe = tracksContainer.querySelector('iframe');
 
             if (firstIframe && firstIframe.contentWindow) {
-                // Send a 'playVideo' command using postMessage
-                // This is a simpler way than loading the full IFrame Player API
                 firstIframe.contentWindow.postMessage(
                     '{"event":"command","func":"playVideo","args":""}',
-                    '*' // Allow message to be sent to any origin (YouTube's domain)
+                    '*'
                 );
-                // Scroll to the tracks section smoothly
-                 selectedGenreTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                selectedGenreTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 if (currentTracks.length > 0) {
                      alert("Could not play the video. Please try again after tracks are fully loaded.");
@@ -125,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Initial Load ---
+    // Initial Load
     if (genreCards.length > 0) {
         genreCards[0].classList.add('active');
     }

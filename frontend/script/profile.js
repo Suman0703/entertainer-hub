@@ -3,19 +3,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const authApiUrl = 'http://localhost:5000/api/auth/me';
     const userListApiUrl = 'http://localhost:5000/api/users/movie-list';
 
-    // --- DOM Elements ---
-    // Summary Card Elements
+    // DOM Elements
     const summaryAvatar = document.getElementById('summary-avatar');
     const summaryFullname = document.getElementById('summary-fullname');
     const summaryEmail = document.getElementById('summary-email');
-
-    // Details Card Elements
     const detailsAvatar = document.getElementById('details-avatar');
     const detailsUsernameHeader = document.getElementById('details-username');
     const detailsEmailDisplay = document.getElementById('details-email-display');
     const editButton = document.getElementById('edit-button');
-
-    // Form Elements
     const profileForm = document.getElementById('profile-form');
     const usernameInput = document.getElementById('profile-username');
     const emailInput = document.getElementById('profile-email');
@@ -27,8 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const saveButton = document.querySelector('.btn-save-changes');
     const cancelButton = document.getElementById('cancel-button');
     const messageArea = document.getElementById('message-area');
-
-    // Navigation & List Elements
     const logoutButton = document.getElementById('logout-button');
     const navItems = document.querySelectorAll('.profile-nav-card .nav-item');
     const profileDetailsCard = document.getElementById('profile-details-card');
@@ -36,15 +29,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const myMovieListContainer = document.getElementById('my-movie-list-container');
     const movieListFeedback = document.getElementById('movie-list-feedback');
 
-
-    // --- State Variable ---
+    // State Variables
     let currentUserData = {};
     let isEditing = false;
 
-
-    // --- Initial Check ---
+    // Initial Check
     if (!token) {
-        // Redirect to login if not authenticated
         const currentPath = window.location.pathname;
          if (currentPath.includes('/pages/')) {
              window.location.href = 'login.html';
@@ -54,10 +44,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
+    // Data Fetching
     async function fetchUserProfileAndList() {
         showLoadingState(true);
         try {
-            // 1. Fetch Profile Data (Needed for both sections)
             const profileRes = await fetch(authApiUrl, {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -75,7 +65,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             currentUserData = { ...user };
             populateProfileData(user);
             
-            // 2. Fetch Movie List (Called during initial load)
             await fetchAndDisplayMovieList();
 
         } catch (error) {
@@ -83,23 +72,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             displayMessage('Failed to load profile data.', 'error');
         } finally {
             showLoadingState(false);
-            // After loading, ensure only the "My Profile" tab is visible by default
             switchContent('profile-details-card');
         }
     }
 
-
+    // Data Population
     function populateProfileData(user) {
         const profilePic = user.profilePictureUrl || '../media/profile-placeholder.jpg';
         
-        // Summary Card & Details Header
         [summaryAvatar, detailsAvatar].forEach(img => img.src = profilePic);
         summaryFullname.textContent = user.fullName || 'N/A';
         summaryEmail.textContent = user.email || 'N/A';
         detailsUsernameHeader.textContent = user.username || 'N/A';
         detailsEmailDisplay.textContent = user.email || 'N/A';
 
-        // Form Inputs (Readonly display)
         usernameInput.value = user.username || '';
         emailInput.value = user.email || '';
         mobileInput.value = user.mobileNumber || '';
@@ -116,15 +102,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     function showLoadingState(isLoading) {
-        // Basic loading state (removed for brevity, but kept structure)
         if (isLoading) {
-             // Set temporary loading text if needed
+             // Optionally add loading indicators
         }
     }
 
-
-    // --- Movie List Functions ---
-
+    // Movie List Functions
     async function fetchAndDisplayMovieList() {
         myMovieListContainer.innerHTML = '<p style="text-align:center;">Loading your movie list...</p>';
         movieListFeedback.textContent = '';
@@ -135,7 +118,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
 
             if (!response.ok) {
-                 // Even on error, show the default message, but log the failure
                 console.error("Failed to fetch movie list API. Status:", response.status);
                 myMovieListContainer.innerHTML = '<p style="text-align:center; color:red;">Failed to load movie list. Check server and login status.</p>';
                 return;
@@ -149,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return;
             }
 
-            myMovieListContainer.innerHTML = ''; // Clear loading message
+            myMovieListContainer.innerHTML = ''; 
 
             movieList.forEach(movie => {
                 const listItem = document.createElement('div');
@@ -194,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (response.ok) {
                 movieListFeedback.textContent = '✅ Movie removed!';
                 movieListFeedback.style.color = '#28a745';
-                fetchAndDisplayMovieList(); // Re-render the list
+                fetchAndDisplayMovieList(); 
             } else {
                 const data = await response.json();
                 movieListFeedback.textContent = `❌ ${data.msg || 'Failed to remove movie!'}`;
@@ -212,13 +194,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // --- Content Switching Logic ---
+    // Content Switching Logic
     function switchContent(targetId) {
-        // Hide both sections initially
         profileDetailsCard.style.display = 'none';
         myListCard.style.display = 'none';
         
-        // Show the target section and ensure "My Profile" nav item is active
         if (targetId === 'profile-details-card') {
             profileDetailsCard.style.display = 'block';
             document.querySelector('.profile-nav-card .nav-item[data-target="profile-details-card"]').classList.add('active');
@@ -227,12 +207,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             myListCard.style.display = 'block';
             document.querySelector('.profile-nav-card .nav-item[data-target="my-list-card"]').classList.add('active');
             document.querySelector('.profile-nav-card .nav-item[data-target="profile-details-card"]').classList.remove('active');
-            fetchAndDisplayMovieList(); // Always refresh list on view
+            fetchAndDisplayMovieList(); 
         }
     }
 
-
-    // --- Tab Navigation Handlers ---
+    // Tab Navigation Handlers
     navItems.forEach(item => {
         if (item.classList.contains('logout')) return;
         
@@ -240,7 +219,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             e.preventDefault();
             const targetId = item.getAttribute('data-target');
             
-            // Handle edit mode cancel on switch
              if (isEditing && targetId !== 'profile-details-card') { 
                  toggleEditMode(false);
              }
@@ -249,7 +227,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
     
-    // --- Edit/Save/Message functions (Unchanged) ---
+    // Edit/Save/Message functions
     function toggleEditMode(editing) {
         isEditing = editing;
         const editableInputs = [usernameInput, emailInput, mobileInput, pictureUrlInput];
@@ -277,14 +255,93 @@ document.addEventListener('DOMContentLoaded', async () => {
          if (isEditing) { updateAvatarPreview(pictureUrlInput.value); }
     });
     
-    // ... (rest of profileForm.addEventListener, displayMessage, clearMessage, and logoutUser functions) ...
-    // NOTE: The rest of the functions (save form, messages, logout) are left out here to keep the response concise, 
-    // but assume they are in the full file and working as intended.
+    profileForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!isEditing) return;
+
+        const updatedData = {
+            username: usernameInput.value.trim(),
+            email: emailInput.value.trim(),
+            mobileNumber: mobileInput.value.trim(),
+            profilePictureUrl: pictureUrlInput.value.trim() || '../media/profile-placeholder.jpg'
+        };
+
+        if (!updatedData.username || !updatedData.email) {
+            displayMessage('Username and Email cannot be empty.', 'error');
+            return;
+        }
+
+        let changed = false;
+        if (updatedData.username !== currentUserData.username ||
+            updatedData.email !== currentUserData.email ||
+            updatedData.mobileNumber !== (currentUserData.mobileNumber || '') ||
+            updatedData.profilePictureUrl !== currentUserData.profilePictureUrl) {
+            changed = true;
+        }
+
+        if (!changed) {
+            displayMessage('No changes detected.', 'info');
+            toggleEditMode(false);
+            return;
+        }
+
+        saveButton.disabled = true;
+        saveButton.textContent = 'Saving...';
+        clearMessage();
+
+        try {
+            const res = await fetch(authApiUrl, {
+                method: 'PUT',
+                headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedData)
+            });
+
+            const result = await res.json();
+
+            if (!res.ok) { throw new Error(result.msg || `Update failed: ${res.statusText}`); }
+
+            currentUserData = { ...result };
+            populateProfileData(result);
+            toggleEditMode(false);
+            displayMessage('Profile updated successfully!', 'success');
+
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            displayMessage(error.message, 'error');
+        } finally {
+            saveButton.disabled = false;
+            saveButton.textContent = 'Save Changes';
+        }
+    });
+
+    function displayMessage(message, type = 'info') {
+        messageArea.textContent = message;
+        messageArea.className = `message-area ${type}`;
+        messageArea.style.display = 'block';
+    }
+    function clearMessage() {
+         messageArea.textContent = '';
+         messageArea.className = 'message-area';
+         messageArea.style.display = 'none';
+    }
+    function logoutUser() {
+        localStorage.removeItem('token');
+        const currentPath = window.location.pathname;
+        if (currentPath.includes('/pages/')) {
+            window.location.href = 'login.html';
+        } else {
+            window.location.href = 'pages/login.html';
+        }
+    }
+
+    // Logout Button
+    logoutButton.addEventListener('click', () => {
+        if (confirm('Are you sure you want to log out?')) {
+            logoutUser();
+        }
+    });
     
-    // --- Initial Load ---
-    fetchUserProfileAndList();
+    // Initial Load
+    fetchAllProfileData();
 
-}); // End DOMContentLoaded
-
-// NOTE: Please ensure the full code for profileForm.addEventListener, displayMessage, clearMessage, and logoutUser 
-// from the previous response is included in your actual profile.js file.
+});

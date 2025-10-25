@@ -62,6 +62,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize the fetch operation
     fetchBooksByGenre();
 });

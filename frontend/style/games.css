@@ -50,13 +50,13 @@
 .games-container {
   padding: 30px;
   display: flex;
-  flex-wrap: wrap;   /* allow wrapping to next line */
+  flex-wrap: wrap;   
   justify-content: center;
   gap: 20px;
 }
 
 .game-card {
-  flex: 1 1 calc(33.33% - 40px); /* 3 cards per row, minus gap */
+  flex: 1 1 calc(33.33% - 40px); 
   max-width: 300px;
   background: #fff;
   color: #0d2c1f;
@@ -100,13 +100,13 @@ button.game-btn:hover {
 /* Responsive for tablets */
 @media (max-width: 900px) {
   .game-card {
-    flex: 1 1 calc(50% - 40px); /* 2 per row */
+    flex: 1 1 calc(50% - 40px); 
   }
 }
 
 /* Responsive for mobiles */
 @media (max-width: 600px) {
   .game-card {
-    flex: 1 1 100%; /* 1 per row */
+    flex: 1 1 100%;
   }
 }
